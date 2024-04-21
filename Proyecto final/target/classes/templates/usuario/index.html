@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{theme/default}">
+
+<body>
+    <!--Layout que carga el contenido en la pagina theme/default. Solo agrega todo lo que esta dentro del div  layout:fragment -->
+    <div layout:fragment="content">
+        <div class="alert alert-success alert-dismissible" role="alert" th:text="${success}" th:if="${success}"><button
+                type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
+        <div class="alert alert-danger alert-dismissible" role="alert" th:text="${error}" th:if="${error}"><button
+                type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
+
+        <div class="mt-5">
+            <a class="btn btn-primary" href="/nuevoUsuario" role="button">Nuevo Usuario</a>
+        </div>
+        <h1>Lista de Usuarios</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>cedula</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Estado</th>
+                    <th>Tipo</th>
+                    <th>Correo</th>
+                    <th>Contraseña</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="usuario : ${usuarios}">
+                    <td th:text="${usuario.cedula}">Cedula</td>
+                    <td th:text="${usuario.nombre}">Nombre</td>
+                    <td th:text="${usuario.apellidos}">Apellidos</td>
+                    <td th:text="${usuario.estado}">Estado</td>
+                    <td th:text="${usuario.role}">Tipo</td>
+                    <td th:text="${usuario.correo}">Correo</td>
+                    <td th:text="${usuario.contrasenna}">Contraseña</td>
+                    <td>
+                        <a th:href="@{/usuariosEditar/{cedula}(cedula=${usuario.cedula})}">Editar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+
+</html>

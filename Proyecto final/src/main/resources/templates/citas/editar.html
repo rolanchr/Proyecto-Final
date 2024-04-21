@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{theme/default}">
+
+<body>
+
+    <div layout:fragment="content">
+
+        <div class="container justify-content-center  mt-5">
+            <form action="#" th:action="@{/citas/guardarCita}" method="post" th:object="${cita}">
+              <input type="text" class="form-control" hidden="true" th:field="*{id}" />
+              <input type="text" class="form-control" hidden="true" th:field="*{usuario}" />
+              
+              <div class="form-outline mb-4">
+                <input type="text" class="form-control" required="true" th:field="*{diagnostico}" />
+                <label class="form-label" >Diagnostico</label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="text" class="form-control" required="true" th:field="*{receta}" />
+                <label class="form-label" for="receta">Receta</label>
+              </div>
+              <!-- Campo para el especialidad-->
+              <div class="form-outline mb-4">
+                <select  th:field="*{especialidad}" class="form-control" required="true">
+                  <option th:each="medico : ${medicos}" th:value="${medico.especialidad} + ' - Medico: ' +${medico.nombre} + ' ' +${medico.apellidos}" th:text="${medico.especialidad} + ' - Medico: ' +${medico.nombre} + ' ' +${medico.apellidos}"></option>
+                </select>
+                <label class="form-label" for="especialidad">Especialidad</label>
+              </div>
+              <div class="form-outline mb-4">
+                <select th:field="*{estado}" class="form-control">
+                  <option th:value="Pendiente" th:text="Pendiente"></option>
+                  <option th:value="Atentida" th:text="Atendida"></option>
+                  <option th:value="Cancelada" th:text="Cancelada"></option>
+                  <option th:value="Reprogramar" th:text="Reprogramar"></option>
+                </select>
+                <label class="form-label" for="apellidos">Estado</label>
+              </div>
+              <div class="form-outline mb-4" id="date" hidden="true">
+                  <input type="datetime-local" class="form-control" required="true" th:field="*{fecha}" />
+                  <label class="form-label" for="fecha">Fecha</label>
+              </div>
+              <!-- Boton ingresar -->
+              <button type="submit" class="btn btn-primary btn-block mb-4">Actualizar</button>
+      
+      
+            </form>
+          </div>
+
+    </div>
+
+</body>
+
+</html>

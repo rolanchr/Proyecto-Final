@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{theme/default}">
+
+<body>
+
+    <div layout:fragment="content">
+
+        <div class="container justify-content-center  mt-5">
+            <form action="#" th:action="@{/citas/guardarCita}" method="post" th:object="${cita}">
+              <!-- Campo para el fecha-->
+              <div class="form-outline mb-4" id="fecha">
+                <input type="datetime-local" class="form-control" required="true" th:field="*{fecha}" />
+                <label class="form-label" for="fecha">Fecha</label>
+              </div>
+              <!-- Campo para el especialidad-->
+              <div class="form-outline mb-4">
+                <select  th:field="*{especialidad}" class="form-control" required="true">
+                  <option th:each="medico : ${medicos}" th:value="${medico.especialidad} + ' - Medico: ' +${medico.nombre} + ' ' +${medico.apellidos}" th:text="${medico.especialidad} + ' - Medico: ' +${medico.nombre} + ' ' +${medico.apellidos}"></option>
+                </select>
+                <label class="form-label" for="especialidad">Especialidad</label>
+              </div>
+              <!-- Boton ingresar -->
+              <button type="submit" class="btn btn-primary btn-block mb-4">Agregar</button>
+      
+      
+            </form>
+          </div>
+
+    </div>
+
+</body>
+
+</html>

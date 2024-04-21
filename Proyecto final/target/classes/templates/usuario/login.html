@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Reservas de Citas para Hospitales</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container justify-content-center  mt-5">
+    <form th:action="@{/}" method="post">
+      <!-- Campo para el usuario-->
+      <div class="form-outline mb-4">
+        <input type="text"  class="form-control" required="true" id="username" name="username"/>
+        <label class="form-label" for="cedula">Cédula</label>
+      </div>
+
+      <!-- Campo para la contraseña -->
+      <div class="form-outline mb-4">
+        <input type="password"  class="form-control" required="true" id="password" name="password"/>
+        <label class="form-label" for="contrasena">Contraseña</label>
+      </div>
+
+      <!-- Boton ingresar -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">Ingresar</button>
+    </form>
+    
+      <!-- Register buttons -->
+      <div class="text-center">
+        <p>Tienes cuenta? <a href="/registrarse">Registrarse</a></p>
+  </div>
+  <div th:replace="theme/file_script"> </div>
+</body>
+
+</html>
+
+
+

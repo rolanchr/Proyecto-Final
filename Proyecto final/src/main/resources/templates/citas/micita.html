@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{theme/default}">
+
+<body>
+<!--Layout que carga el contenido en la pagina theme/default. Solo agrega todo lo que esta dentro del div  layout:fragment --> 
+    <div layout:fragment="content">
+        <h1>Lista citas</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Paciente</th>
+                <th>Fecha</th>
+                <th>Diagnostico</th>
+                <th>Especialidad</th>
+                <th>Receta</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cita : ${citas}">
+                <td th:text="${cita.id}">Id</td> 
+                <td th:text="${cita.usuario}">Paciente</td>
+                <td th:text="${cita.fecha}">Fecha</td>
+                <td th:text="${cita.diagnostico}">Diagnostico</td>
+                <td th:text="${cita.especialidad}">Especialidad</td>
+                <td th:text="${cita.receta}">Receta</td>
+                <td th:text="${cita.estado}">Estado</td>
+            </tr>
+        </tbody>
+    </table>
+
+    </div>
+
+</body>
+
+</html>

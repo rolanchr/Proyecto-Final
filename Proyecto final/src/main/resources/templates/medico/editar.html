@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{theme/default}"><!--Se definie la plantilla a usar --> 
+
+<body>
+<!--Layout que carga el contenido en la pagina theme/default. Solo agrega todo lo que esta dentro del div  layout:fragment --> 
+  <div layout:fragment="content">
+
+    <div class="container justify-content-center  mt-5">
+      <form action="#" th:action="@{/editarMedico}" method="post" th:object="${medico}">
+        <!-- Campo para el usuario-->
+        <div class="form-outline mb-4">
+          <input type="text" class="form-control" readonly="true" th:field="*{cedula}" />
+          <label class="form-label" for="cedula">Cédula</label>
+        </div>
+        <!-- Campo para el Nombre-->
+        <div class="form-outline mb-4">
+          <input type="text" class="form-control" required="true" th:field="*{nombre}" />
+          <label class="form-label" for="nombre">Nombre</label>
+        </div>
+        <!-- Campo para el Apellidos-->
+        <div class="form-outline mb-4">
+          <input type="text" class="form-control" required="true" th:field="*{apellidos}" />
+          <label class="form-label" for="apellidos">Apellidos</label>
+        </div>
+        <!-- Campo para el Estado-->
+        <div class="form-outline mb-4">
+          <select th:field="*{estado}" class="form-control">
+            <option th:value="Activo" th:text="Activo"></option>
+            <option th:value="Inactivo" th:text="Inactivo"></option>
+          </select>
+          <label class="form-label" for="apellidos">Estado</label>
+        </div>
+        <!-- Campo para la especialidad-->
+        <div  class="form-outline mb-4">
+          <select th:field="*{especialidad}" class="form-control">
+            <option th:value="Odontologia" th:text="Odontología"></option>
+            <option th:value="Cardiologia" th:text="Cardiología"></option>
+            <option th:value="Neurologia" th:text="Neurología "></option>
+            <option th:value="Oftalmologia" th:text="Oftalmología"></option>
+            <option th:value="Dermatologia" th:text="Dermatología"></option>
+            <option th:value="Gastroenterologia" th:text="Gastroenterología"></option>
+          </select>
+          <label class="form-label" for="apellidos">Especialidad</label>
+        </div>
+  
+        <!-- Boton ingresar -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Actualizar</button>
+
+
+      </form>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

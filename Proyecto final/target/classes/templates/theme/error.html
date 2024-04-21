@@ -1,0 +1,25 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas de Citas para Hospitales</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container mt-5" >
+        <h1>Ha ocurrido un error, intente nuevamente</h1>
+        <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Atras</button>
+        </form>
+    </div>
+
+    <div th:replace="theme/file_script"> </div>
+
+   
+</body>
+</html>

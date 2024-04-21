@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{theme/default}">
+
+<body>
+    <!--Layout que carga el contenido en la pagina theme/default. Solo agrega todo lo que esta dentro del div  layout:fragment -->
+    <div layout:fragment="content">
+        <div class="alert alert-success alert-dismissible" role="alert" th:text="${success}" th:if="${success}"><button
+                type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
+        <div class="alert alert-danger alert-dismissible" role="alert" th:text="${error}" th:if="${error}"><button
+                type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
+        <h1>Lista citas</h1>
+        <div id="accordion" role="tablist">
+            <div class="card">
+                <div class="card-header" role="tab" id="headingOne">
+                    <h5 class="mb-0">
+                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Citas Pendientes
+                        </a>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Paciente</th>
+                                    <th>Fecha</th>
+                                    <th>Diagnostico</th>
+                                    <th>Especialidad</th>
+                                    <th>Receta</th>
+                                    <th>Estado</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="cita : ${Pcitas}">
+                                    <td th:text="${cita.id}">Id</td>
+                                    <td th:text="${cita.usuario}">Paciente</td>
+                                    <td th:text="${cita.fecha}">Fecha</td>
+                                    <td th:text="${cita.diagnostico}">Diagnostico</td>
+                                    <td th:text="${cita.especialidad}">Especialidad</td>
+                                    <td th:text="${cita.receta}">Receta</td>
+                                    <td th:text="${cita.estado}">Estado</td>
+                                    <td>
+                                        <a th:href="@{/citas/editar/{id}(id=${cita.id})}">Editar</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" role="tab" id="headingTwo">
+                    <h5 class="mb-0">
+                        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                            Citas canceladas
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="card-body">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Paciente</th>
+                                    <th>Fecha</th>
+                                    <th>Diagnostico</th>
+                                    <th>Especialidad</th>
+                                    <th>Receta</th>
+                                    <th>Estado</th>
+                                    <th>Fecha cancelación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="cita : ${Ccitas}">
+                                    <td th:text="${cita.id}">Id</td>
+                                    <td th:text="${cita.usuario}">Paciente</td>
+                                    <td th:text="${cita.fecha}">Fecha</td>
+                                    <td th:text="${cita.diagnostico}">Diagnostico</td>
+                                    <td th:text="${cita.especialidad}">Especialidad</td>
+                                    <td th:text="${cita.receta}">Receta</td>
+                                    <td th:text="${cita.estado}">Estado</td>
+                                    <td th:text="${cita.fechaCancelacion}">Fecha cancelación</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" role="tab" id="headingTwo">
+                    <h5 class="mb-0">
+                        <a class="collapsed" data-toggle="collapse" href="#collapseTree" aria-expanded="false"
+                            aria-controls="collapseTree">
+                            Todas las citas
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapseTree" class="collapse" role="tabpanel" aria-labelledby="headingTree">
+                    <div class="card-body">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Paciente</th>
+                                    <th>Fecha</th>
+                                    <th>Diagnostico</th>
+                                    <th>Especialidad</th>
+                                    <th>Receta</th>
+                                    <th>Estado</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="cita : ${citas}">
+                                    <td th:text="${cita.id}">Id</td>
+                                    <td th:text="${cita.usuario}">Paciente</td>
+                                    <td th:text="${cita.fecha}">Fecha</td>
+                                    <td th:text="${cita.diagnostico}">Diagnostico</td>
+                                    <td th:text="${cita.especialidad}">Especialidad</td>
+                                    <td th:text="${cita.receta}">Receta</td>
+                                    <td th:text="${cita.estado}">Estado</td>
+                                    <td>
+                                        <a th:href="@{/citas/editar/{id}(id=${cita.id})}">Editar</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Reservas de Citas para Hospitales</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="container justify-content-center  mt-5">
+    <form action="#" th:action="@{/guardarRegistro}" method="post" th:object="${usuario}">
+      <!-- Campo para el usuario-->
+      <div class="form-outline mb-4">
+        <input type="text" class="form-control" required="true" th:field="*{cedula}"/>
+        <label class="form-label" for="cedula">Cédula</label>
+      </div>
+      <!-- Campo para el Nombre-->
+      <div class="form-outline mb-4">
+        <input type="text" class="form-control" required="true" th:field="*{nombre}"/>
+        <label class="form-label" for="nombre">Nombre</label>
+      </div>
+      <!-- Campo para el Apellidos-->
+      <div class="form-outline mb-4">
+        <input type="text" class="form-control" required="true" th:field="*{apellidos}"/>
+        <label class="form-label" for="apellidos">Apellidos</label>
+      </div>
+           <!-- Campo para el Correo-->
+           <div class="form-outline mb-4">
+            <input type="email" class="form-control" required="true" th:field="*{correo}"/>
+            <label class="form-label" for="correo">Correo</label>
+          </div>
+      <!-- Campo para la contraseña -->
+      <div class="form-outline mb-4">
+        <input type="password" class="form-control" required="true"th:field="*{contrasenna}" />
+        <label class="form-label" for="contrasenna">Contraseña</label>
+      </div>
+
+      <!-- Boton ingresar -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">Ingresar</button>
+
+      <!-- Register buttons -->
+      <div class="text-center">
+        <p><a href="/">Atras</a></p>
+      </div>
+    </form>
+  </div>
+  <div th:replace="theme/file_script"> </div>
+</body>
+
+</html>

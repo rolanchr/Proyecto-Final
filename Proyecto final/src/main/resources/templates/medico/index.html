@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{theme/default}">
+
+<body>
+    <!--Layout que carga el contenido en la pagina theme/default. Solo agrega todo lo que esta dentro del div  layout:fragment -->
+    <div layout:fragment="content">
+        <div class="alert alert-success alert-dismissible" role="alert" th:text="${success}" th:if="${success}"><button
+                type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
+        <div class="alert alert-danger alert-dismissible" role="alert" th:text="${error}" th:if="${error}"><button
+                type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
+
+        <div class="mt-5">
+            <a class="btn btn-primary" href="/nuevoMedico" role="button">Nuevo Medico</a>
+        </div>
+        <h1>Lista de Medicos</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>cedula</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Estado</th>
+                    <th>Especialidad</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="medico : ${medicos}">
+                    <td th:text="${medico.cedula}">Cedula</td>
+                    <td th:text="${medico.nombre}">Nombre</td>
+                    <td th:text="${medico.apellidos}">Apellidos</td>
+                    <td th:text="${medico.estado}">Estado</td>
+                    <td th:text="${medico.especialidad}">Especialidad</td>
+                    <td>
+                        <a th:href="@{/medicoEditar/{cedula}(cedula=${medico.cedula})}">Editar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+
+</html>
